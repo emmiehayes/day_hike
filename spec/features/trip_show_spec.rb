@@ -76,5 +76,15 @@ describe "user sees all trip" do
 
       expect(page).to have_content("Total Distance: #{trip_1.total_length}")
     end
+
+    it "click trail to go to trail show" do
+      trip_1 = Trip.create(name: "Title 1")
+      trail_1 = trip_1.trails.create(name: 'trail_1', address: 'trail_1 address', length: 1)
+
+      visit trip_path(trip_1)
+      click_on 'Trail_1'
+
+      expect(current_path).to eq(trail_path(trail_1))
+    end
   end
 end
