@@ -1,1 +1,7 @@
-<%= @trip.name %>
+<h2>All Trails for<%=  @trip.name %></h2>
+
+<%@trip.trails.each do |trail|%>
+<%=link_to trail.name%>
+<%=trail.address%>
+<%=trail.length%>
+<% end %>
